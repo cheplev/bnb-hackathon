@@ -7,10 +7,6 @@ pragma solidity ^0.8.19;
 contract Rating {
     mapping(bytes32 => uint) public usersRating;
 
-    constructor() payable {
-        require(msg.value > 1000 wei, "fuck you");
-    }
-
     function setRating(string memory pass, uint rating) public {
         require(rating < 6, "Rating should be between 0 and 5");
         rating *= 100;
