@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 import "@openzeppelin/contracts/access/Ownable.sol";
-import "./NFT.sol";
+import "./Nft";
 
 contract Credit is Ownable {
-    NFT nftContract = NFT(0x416CDA3814691968A05fc620C338069B74aBCA3E);
+    NFT nftContract = NFT(0x2D25aDd15fAB62d8eA20EC83477bB78839F369cb);
 
     uint256 public totalLoans;
 
@@ -77,8 +77,7 @@ contract Credit is Ownable {
         );
 
         loan.paidBack = true;
-        console.log("bor", loan.borrower);
-        console.log("msg", msg.sender);
-        nftContract.makeAnNFT(loan.borrower, "4");
+
+        nftContract.makeAnNFT(msg.sender, 4);
     }
 }

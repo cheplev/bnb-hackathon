@@ -1,25 +1,24 @@
+const hre = require("hardhat");
+
 const main = async () => {
-    const nftContractFactory = await hre.ethers.getContractFactory('NFT');
-    const nftContract = await nftContractFactory.deploy();
-    await nftContract.deployed();
-    console.log("contract deployed to:", nftContract.address);
+  // Get the contract factory
+  const NFTContract = await hre.ethers.getContractFactory("NFT");
 
-    let txn = await nftContract.makeAnNFT('0x36FAa2f0aA969ffAE5A6242b793F060F3790b4d5', '5')
+  // Deploy the contract to the Binance Smart Chain Testnet
+  const nftContract = await NFTContract.deploy();
+  await nftContract.deployed();
+  console.log("Contract deployed to:", nftContract.address);
 
-    await txn.wait()
-    console.log("Minted NFTs #1")
-
+  // Mint an NFT
+  const txn = await nftContract.makeAnNFT("0x5681B966d23A2bc87564f1654ae3b9Cada65902A", "5");
+  await txn.wait();
+  console.log("Minted NFT #1");
 };
 
-const runMain = async () => {
-        try{
-            await main();
-            process.exit(0);
-        } catch(error) {
-            console.log(error);
-            process.exit(1);
-        }
-
-};
-
-runMain();
+// Run the deployment script
+main()
+  .then(() => process.exit(0))
+  .catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });

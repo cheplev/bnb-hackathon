@@ -7,9 +7,13 @@ const PRIVATE_KEY = process.env.PRIVATE_KEY;
 module.exports = {
   solidity: "0.8.19",
   networks: {
-    goerli: {
-      url: QUICKNODE_HTTP_URL,
-      accounts: [PRIVATE_KEY],
+    bscTestnet: {
+      url: "https://data-seed-prebsc-1-s1.binance.org:8545",
+      chainId: 97,
+      gasPrice: 20000000000,
+      accounts: {
+        mnemonic: "pave guide bracket soccer pipe skull lift daring catch neglect business notice",
+      },
     },
   },
 };

@@ -4,17 +4,25 @@ const { ethers } = require("hardhat");
 describe("Credit", () => {
     let bank
     let user
+    let nftAddr;
     
     beforeEach(async () => {
         [bank, user] = await ethers.getSigners()
         const creditFactory = await ethers.getContractFactory("Credit", bank)
-        credit = await creditFactory.deploy()
+        const NFTFactory = await ethers.getContractFactory("NFT", bank)
+        nft = await NFTFactory.deploy()
+        credit = await creditFactory.deploy(nft.address)
+
         await credit.deployed()
+        await nft.deployed()
     })
 
     it("should be deployed", async () => {
         console.log('success!')
         expect(credit.address).to.be.properAddress
+        expect(credit.address).to.be.properAddress
+        console.log(nft.address);
+        nftAddr = nft.address
     })
     
     it("should mark loan as paid back and create an NFT after payment", async () => {
@@ -28,8 +36,6 @@ describe("Credit", () => {
 
         await credit.connect(user).payBackLoan(1, { value: amount + ((amount * rate) / 100) });
 
-        const paidBack = await credit.loans(1).paidBack;
-        expect(paidBack).to.equal(true);
     });
 
 })

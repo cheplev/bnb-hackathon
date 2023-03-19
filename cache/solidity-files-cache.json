@@ -107,8 +107,8 @@
       ]
     },
     "/home/chep/bnb/contracts/Credit.sol": {
-      "lastModificationDate": 1679208022813,
-      "contentHash": "91d769b21234619174b6a659f52a9224",
+      "lastModificationDate": 1679212070927,
+      "contentHash": "530f24e3ccb5ebde17b45059b6417252",
       "sourceName": "contracts/Credit.sol",
       "solcConfig": {
         "version": "0.8.19",
@@ -138,7 +138,7 @@
         "./NFT.sol"
       ],
       "versionPragmas": [
-        "^0.8.0"
+        "^0.8.19"
       ],
       "artifacts": [
         "Credit"
