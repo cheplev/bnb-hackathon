@@ -23,8 +23,6 @@ contract NFT is ERC721URIStorage {
             abi.encodePacked(baseSvg, _rating, "</text></svg>")
         );
 
-        console.log(finalSvg);
-
         string memory json = Base64.encode(
             bytes(
                 string(
@@ -44,8 +42,6 @@ contract NFT is ERC721URIStorage {
         string memory finalTokenUri = string(
             abi.encodePacked("data:application/json;base64,", json)
         );
-
-        console.log(json);
 
         _safeMint(_to, newItemId);
 

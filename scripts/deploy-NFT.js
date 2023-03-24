@@ -10,7 +10,7 @@ const main = async () => {
   console.log("Contract deployed to:", nftContract.address);
 
   // Mint an NFT
-  const txn = await nftContract.makeAnNFT("0x5681B966d23A2bc87564f1654ae3b9Cada65902A", "5");
+  const txn = await nftContract.makeAnNFT("0x29F0d2316DD20c00dE2402Baa65947f442a158E3", "1");
   await txn.wait();
   console.log("Minted NFT #1");
 };

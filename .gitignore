@@ -1,3 +1,5 @@
 /node_modules
 /rating-test/node_modules
 .env
+/artifacts
+/cache
