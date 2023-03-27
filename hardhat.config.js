@@ -1,12 +1,13 @@
 require("@nomicfoundation/hardhat-toolbox");
 require("dotenv").config();
+const { mnemonic } = require('./secret.json');
 
 const { API_URL, PRIVATE_KEY } = process.env;
 //* Default Template for Reference
 
 module.exports = {
   solidity: "0.8.19",
-  defaultNetwork: "polygon_mumbai",
+  defaultNetwork: "testnet",
   networks: {
     hardhat: {
       chainId: 31337
@@ -14,6 +15,12 @@ module.exports = {
     polygon_mumbai: {
       url: "https://rpc-mumbai.maticvigil.com",
       accounts: [process.env.PRIVATE_KEY]
+    },
+    testnet: {
+      url: "https://data-seed-prebsc-1-s1.binance.org:8545",
+      chainId: 97,
+      gasPrice: 20000000000,
+      accounts: {mnemonic: mnemonic}
     },
   }
 };
